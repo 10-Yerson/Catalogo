@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
 import React from 'react'
-
+import { useState, useEffect } from 'react'
 import Layout from '../../Components/Layout'
 import Card from '../../Components/Card'
+import ProductDetail from '../../Components/ProductDetail'
 
 function Home() {
 
@@ -10,42 +10,29 @@ function Home() {
     useEffect(() => {
         // https://fakeapi.platzi.com/
         fetch('https://api.escuelajs.co/api/v1/products')
+            // fetch('https://jsonplaceholder.typicode.com/photos')
             .then(response => response.json())
-            .then(data => setItems(data))
+            .then(data => console.log(setItems(data)))
 
     }, [])
+
     return (
         <>
             <Layout>
-                Home
+            Home
+
                 <div className='grid gap-4 grid-cols-4 w-full max-w-screen-lg'>
                     {
                         items?.map(item => (
                             <Card key={item.id} data={item} />
                         ))
                     }
-
+                    
                 </div>
+                <ProductDetail />
             </Layout>
         </>
-
     )
 }
 export default Home
-
-/*
-function Home() {
-    return (
-        <>
-            <Layout>
-                Home
-                <Card />
-            </Layout>
-        </>
-    )
-}
-
-export default Home  
-
-*/
 

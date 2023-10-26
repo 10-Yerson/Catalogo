@@ -1,7 +1,12 @@
 import { NavLink } from "react-router-dom"
 
+import { useContext } from 'react'
+import { CartContext } from "../../Context"
+
 
 const Navbar = () => {
+
+    const context = useContext(CartContext)
     const activeStyle = ' underline underline-offset-4'
 
     return (
@@ -31,6 +36,9 @@ const Navbar = () => {
                         className={({ isActive }) => isActive ? activeStyle : undefined}>
                         Not Found
                     </NavLink>
+                </li>
+                <li>
+                    {context.count}
                 </li>
             </ul>
 

@@ -1,4 +1,5 @@
 import { useRoutes, BrowserRouter } from 'react-router-dom'
+import { CartContextProvider } from '../../Context'
 import Home from '../Home'
 import Contact from '../Contact'
 import NotFound from '../NotFound'
@@ -17,12 +18,15 @@ const AppRoutes = () => {
 
 const App = () => {
     return (
-        <BrowserRouter>
-            <Navbar />
-            <AppRoutes />   
-        </BrowserRouter>
+        <CartContextProvider>
+            <BrowserRouter>
+                <AppRoutes />
+                <Navbar />
+            </BrowserRouter>
+        </CartContextProvider>
     )
 }
 
 export default App
+
 
